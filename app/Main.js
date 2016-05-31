@@ -7,13 +7,10 @@ class Main extends React.Component {
 	render() {
 		return (
 			<div>
-				<div class="jumbotron">
-					<h1>Simple Chat</h1>
-				</div>
-				<div className="col-md-2">
+				<div>
 					<NavBar />
 				</div>
-				<div className="col-md-10">
+				<div className="col-md-12">
 					<div>
 						{this.props.children}
 					</div>

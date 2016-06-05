@@ -12,7 +12,6 @@ var config = {
 
 firebase.initializeApp(config);
 
-
 ReactDOM.render(
     routes,
     document.getElementById("app"));

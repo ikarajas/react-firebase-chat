@@ -10,24 +10,14 @@ class ChatContainer extends React.Component {
         this.chatName = "demoChat";
     }
 
-    handleResetChat(event) {
-        event.preventDefault();
-        firebase.database().ref("chats/demoChat").set(null);
-    }
-
     render() {
         return (
             <div>
-                <div style={styles.resetChat}>
-                    <p className="text-right">
-                        <a href="#" onClick={this.handleResetChat.bind(this)}>Reset Chat</a>
-                    </p>
-                </div>
                 <div>
                     <Conversation chatName={this.chatName} />
                 </div>
                 <div>
-                    <ChatEntry currentPerson={this.props.location.query.name} chatName={this.chatName} />
+                    <ChatEntry chatName={this.chatName} />
                 </div>
             </div>
             );
@@ -78,9 +68,13 @@ class Conversation extends React.Component {
 
 class ChatItem extends React.Component {
     render() {
+        let cu = window.userService.getUserByKey(this.props.chatItemObj.userKey);
         return (
             <div style={styles.chatItem}>
-                <strong>{this.props.chatItemObj.name}:</strong>&nbsp;
+                <span style={{ paddingRight: "1em" }}>
+                    <img style={styles.chatWindowAvatarImage} src={cu.photoUrl} />
+                </span>
+                <strong>{cu.displayName}:</strong>&nbsp;
                 <span>{this.props.chatItemObj.text}</span>
             </div>
         )
@@ -101,7 +95,8 @@ class ChatEntry extends React.Component {
         var newChatItemPath = conversationPath + "/" + newKey;
         var updates = {};
         updates[newChatItemPath] = {
-            name: this.props.currentPerson,
+            userKey: window.userService.currentUser.key,
+            name: firebase.auth().currentUser.displayName,
             timeStamp: ((new Date()).getTime()),
             text: this.state.text
         };

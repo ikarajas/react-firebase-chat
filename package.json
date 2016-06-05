@@ -23,6 +23,7 @@
   "dependencies": {
     "bootstrap": "^3.3.6",
     "firebase": "^3.0.2",
+    "pubsub-js": "^1.5.3",
     "react": "^15.1.0",
     "react-bootstrap": "^0.29.4",
     "react-dom": "^15.1.0",

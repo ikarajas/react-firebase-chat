@@ -1,7 +1,4 @@
 var styles = {
-    resetChat: {
-        marginRight: "1em"
-    },
     conversationContainer: {
         padding: "0px"
     },
@@ -19,6 +16,21 @@ var styles = {
         padding: "0.5em",
         backgroundColor: "antiquewhite",
         overflow: "auto"
+    },
+    navBarAvatar: {
+        width: "15em"
+    },
+    avatarImage: {
+        position: "absolute",
+        top: "5px",
+        width: "40px",
+        height: "40px",
+        borderRadius: "20px"
+    },
+    chatWindowAvatarImage: {
+        width: "40px",
+        height: "40px",
+        borderRadius: "20px"
     }
 };
 
